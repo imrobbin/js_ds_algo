@@ -18,7 +18,7 @@ class LinearSearch {
 
 let linear = new LinearSearch();
 
-console.log(linear.linearSearch([53, 42, 12, 14, 20, 7, 43, 52, 46, 0], 7));
-console.log(linear.linearSearch([53, 42, 12, 14, 20, 7, 43, 52, 46, 0], 23));
-console.log(linear.linearSearch([53, 42, 12, 14, 20, 7, 43, 52, 46, 0], 20));
-console.log(linear.linearSearch([53, 42, 12, 14, 20, 7, 43, 52, 46, 0], -1));
+console.log(linear.linearSearch([53, 42, 12, 14, 20, 7, 43, 52, 46, 0], 7)); // 5
+console.log(linear.linearSearch([53, 42, 12, 14, 20, 7, 43, 52, 46, 0], 23)); // -1
+console.log(linear.linearSearch([53, 42, 12, 14, 20, 7, 43, 52, 46, 0], 20)); // 4
+console.log(linear.linearSearch([53, 42, 12, 14, 20, 7, 43, 52, 46, 0], -1)); // -1
