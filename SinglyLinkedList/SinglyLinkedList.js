@@ -95,6 +95,38 @@ class SinglyLinkedList {
         return true;
     }
 
+    // add a new node to the linked list at specific postion
+    insert(position, value) {
+        if (position === undefined || value === undefined) return 'Please provide a position and value to insert';
+        if (position < 0 || position >= this.length) return false;
+
+        if (position === 0) return !!this.unshift(value);
+        if (position === this.length) return !!this.push(value);
+
+        let prev = this.get(position - 1);
+        let newNode = new Node(value);
+        newNode.next = prev.next;
+        prev.next = newNode;
+        this.length++;
+        return true;
+    }
+
+    // delete a node from the linked list at specific position
+    remove(position) {
+        if (position === undefined) return 'Please provide a position to remove';
+        if (position < 0 || position >= this.length) return false;
+
+        if (position === 0) return !!this.shift();
+        if (position === this.length - 1) return !!this.pop();
+
+        let prev = this.get(position - 1);
+        let poppedNode = prev.next;
+        prev.next = poppedNode.next;
+
+        this.length--;
+        return poppedNode;
+    }
+
     // helper function to get second last node from linked list
     getSecondLastNode() {
         let current = this.head;
@@ -135,13 +167,26 @@ console.log('after push ', list.print());
 // const shiftedNode = list.shift();
 // console.log('shift result \n', shiftedNode, '\n', list.print());
 
-const getResult = list.get(1);
-console.log('get result ', getResult);
-
+// const getResult = list.get(1);
+// console.log('get result ', getResult);
 // const setResult1 = list.set(-4, '111');
 // console.log('set result ', setResult1);
 // const setResult2 = list.set(0, '111');
 // console.log('set result ', setResult2);
+
+// const insertResult1 = list.insert(0, '000');
+// console.log('insert result ', insertResult1);
+// const insertResult2 = list.insert(3, '333');
+// console.log('insert result ', insertResult2);
+
+// console.log(list.print());
+
+// const insertResult3 = list.remove(3);
+// console.log('remove result ', insertResult3);
+// const insertResult4 = list.remove(-1);
+// console.log('remove result ', insertResult4);
+// const insertResult5 = list.remove(7);
+// console.log('remove result ', insertResult5);
 
 console.log(list.print());
 // console.log('\n final list \n ', list);
