@@ -127,6 +127,24 @@ class SinglyLinkedList {
         return poppedNode;
     }
 
+    // reverse the given linked list
+    reverse() {
+        [this.tail, this.head] = [this.head, this.tail];
+
+        let current = this.tail;
+        let prev = null;
+        let next = null;
+
+        for (let i = 0; i < this.length; i++) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+
+        return true;
+    }
+
     // helper function to get second last node from linked list
     getSecondLastNode() {
         let current = this.head;
@@ -157,36 +175,38 @@ list.push(12);
 list.push(13);
 console.log('after push ', list.print());
 
-// list.pop();
-// list.pop();
-// console.log('after pop ', list.print());
+list.pop();
+list.pop();
+console.log('after pop ', list.print());
 
-// list.unshift('10');
-// console.log('after unshift ', list.print());
+list.unshift('10');
+console.log('after unshift ', list.print());
 
-// const shiftedNode = list.shift();
-// console.log('shift result \n', shiftedNode, '\n', list.print());
+const shiftedNode = list.shift();
+console.log('shift result \n', shiftedNode, '\n', list.print());
 
-// const getResult = list.get(1);
-// console.log('get result ', getResult);
-// const setResult1 = list.set(-4, '111');
-// console.log('set result ', setResult1);
-// const setResult2 = list.set(0, '111');
-// console.log('set result ', setResult2);
+const getResult = list.get(1);
+console.log('get result ', getResult);
+const setResult1 = list.set(-4, '111');
+console.log('set result ', setResult1);
+const setResult2 = list.set(0, '111');
+console.log('set result ', setResult2);
 
-// const insertResult1 = list.insert(0, '000');
-// console.log('insert result ', insertResult1);
-// const insertResult2 = list.insert(3, '333');
-// console.log('insert result ', insertResult2);
-
-// console.log(list.print());
-
-// const insertResult3 = list.remove(3);
-// console.log('remove result ', insertResult3);
-// const insertResult4 = list.remove(-1);
-// console.log('remove result ', insertResult4);
-// const insertResult5 = list.remove(7);
-// console.log('remove result ', insertResult5);
+const insertResult1 = list.insert(0, '000');
+console.log('insert result ', insertResult1);
+const insertResult2 = list.insert(3, '333');
+console.log('insert result ', insertResult2);
 
 console.log(list.print());
-// console.log('\n final list \n ', list);
+
+const insertResult3 = list.remove(3);
+console.log('remove result ', insertResult3);
+const insertResult4 = list.remove(-1);
+console.log('remove result ', insertResult4);
+const insertResult5 = list.remove(7);
+console.log('remove result ', insertResult5);
+const reverse = list.reverse();
+console.log('reverse result ', reverse);
+
+console.log(list.print());
+console.log('\n final list \n ', list);
