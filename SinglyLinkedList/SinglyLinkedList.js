@@ -56,6 +56,45 @@ class SinglyLinkedList {
         return this;
     }
 
+    // remove a node form the start of the linked list
+    shift() {
+        if (this.length === 0) return false;
+
+        let poppedNode = this.head;
+        this.head = poppedNode.next;
+        this.length--;
+
+        if (this.length === 0) this.head = this.tail = null;
+
+        return poppedNode;
+    }
+
+    // access a node from the linked list based on it's position
+    get(position) {
+        if (position === undefined) return 'Please provide a position to get';
+
+        if (position < 0 || position >= this.length) return false;
+
+        let nodeFound = this.head;
+        let counter = 0;
+        while (counter !== position) {
+            nodeFound = nodeFound.next;
+            counter++;
+        }
+        return nodeFound;
+    }
+
+    // update value of a node based on it's position
+    set(position, value) {
+        if (position === undefined || value === undefined) return 'Please provide a position and value to set';
+
+        if (position < 0 || position >= this.length) return false;
+
+        let node = this.get(position);
+        node.value = value;
+        return true;
+    }
+
     // helper function to get second last node from linked list
     getSecondLastNode() {
         let current = this.head;
@@ -80,18 +119,29 @@ class SinglyLinkedList {
 }
 
 let list = new SinglyLinkedList();
-list.push(0);
-list.push(1);
-list.push(2);
-list.push(3);
+list.push(10);
+list.push(11);
+list.push(12);
+list.push(13);
 console.log('after push ', list.print());
 
-list.pop();
-list.pop();
-list.pop();
-console.log('after pop ', list.print());
-list.unshift('10');
+// list.pop();
+// list.pop();
+// console.log('after pop ', list.print());
 
-console.log('after unshift ', list.print());
+// list.unshift('10');
+// console.log('after unshift ', list.print());
 
-console.log('final list \n ', list);
+// const shiftedNode = list.shift();
+// console.log('shift result \n', shiftedNode, '\n', list.print());
+
+const getResult = list.get(1);
+console.log('get result ', getResult);
+
+// const setResult1 = list.set(-4, '111');
+// console.log('set result ', setResult1);
+// const setResult2 = list.set(0, '111');
+// console.log('set result ', setResult2);
+
+console.log(list.print());
+// console.log('\n final list \n ', list);
