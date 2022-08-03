@@ -12,6 +12,7 @@ class SinglyLinkedList {
         this.length = 0;
     }
 
+    // add a new node at the end of the linked list
     push(value) {
         if (value === undefined) return 'Please provide a value';
 
